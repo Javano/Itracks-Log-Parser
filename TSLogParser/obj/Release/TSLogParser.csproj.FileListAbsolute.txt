@@ -1,0 +1,15 @@
+C:\Users\adam.carruthers\Google Drive\Projects\C#\TSLogParser\TSLogParser\bin\Release\TSLogParser.exe.config
+C:\Users\adam.carruthers\Google Drive\Projects\C#\TSLogParser\TSLogParser\bin\Release\icons\bullet.ico
+C:\Users\adam.carruthers\Google Drive\Projects\C#\TSLogParser\TSLogParser\bin\Release\icons\checkmark.ico
+C:\Users\adam.carruthers\Google Drive\Projects\C#\TSLogParser\TSLogParser\bin\Release\icons\exclamation.ico
+C:\Users\adam.carruthers\Google Drive\Projects\C#\TSLogParser\TSLogParser\bin\Release\icons\skipped.ico
+C:\Users\adam.carruthers\Google Drive\Projects\C#\TSLogParser\TSLogParser\bin\Release\icons\x.ico
+C:\Users\adam.carruthers\Google Drive\Projects\C#\TSLogParser\TSLogParser\bin\Release\log.txt
+C:\Users\adam.carruthers\Google Drive\Projects\C#\TSLogParser\TSLogParser\bin\Release\TSLogParser.exe
+C:\Users\adam.carruthers\Google Drive\Projects\C#\TSLogParser\TSLogParser\bin\Release\TSLogParser.pdb
+C:\Users\adam.carruthers\Google Drive\Projects\C#\TSLogParser\TSLogParser\obj\Release\TSLogParser.Form1.resources
+C:\Users\adam.carruthers\Google Drive\Projects\C#\TSLogParser\TSLogParser\obj\Release\TSLogParser.Form2.resources
+C:\Users\adam.carruthers\Google Drive\Projects\C#\TSLogParser\TSLogParser\obj\Release\TSLogParser.Properties.Resources.resources
+C:\Users\adam.carruthers\Google Drive\Projects\C#\TSLogParser\TSLogParser\obj\Release\TSLogParser.csproj.GenerateResource.Cache
+C:\Users\adam.carruthers\Google Drive\Projects\C#\TSLogParser\TSLogParser\obj\Release\TSLogParser.exe
+C:\Users\adam.carruthers\Google Drive\Projects\C#\TSLogParser\TSLogParser\obj\Release\TSLogParser.pdb
