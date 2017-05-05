@@ -23,7 +23,7 @@ namespace ItracksLogParser
         private List<string> serverNames = new List<string>();
         private Dictionary<string, List<string>> serverDic = new Dictionary<string, List<string>>();
 
-        private BindingList<string> lstLogStrs = new BindingList<string>();
+        private BindingList<KeyValuePair<string, DateTime>> lstLogStrs = new BindingList<KeyValuePair<string, DateTime>>();
         public Form1()
         {
             InitializeComponent();
@@ -35,7 +35,9 @@ namespace ItracksLogParser
             treeView.Nodes.Add(mainTest);
             treeView.TreeViewNodeSorter = new LogNodeSorter();
             lstLogs.DataSource = lstLogStrs;
+            lstLogs.DisplayMember = "Key";
             lstLogs.ClearSelected();
+            lstLogs.DrawMode = DrawMode.OwnerDrawVariable;
             updateLogList();
             treeView.Nodes.Clear();
             treeView.Enabled = false;
@@ -245,7 +247,8 @@ namespace ItracksLogParser
             ListBox lstSender = (ListBox)sender;
             if (lstSender.SelectedIndex >= 0)
             {
-                loadFromFile(lstSender.SelectedItem.ToString());
+                KeyValuePair<string, DateTime> kv = (KeyValuePair<string, DateTime>)lstSender.SelectedItem;
+                loadFromFile(kv.Key);
             }
         }
 
@@ -280,7 +283,7 @@ namespace ItracksLogParser
         private void updateLogList()
         {
             lstLogStrs.Clear();
-            lstLogStrs.Add("LOADING...");
+            lstLogStrs.Add(new KeyValuePair<string, DateTime>("LOADING...", DateTime.Now));
             lstLogs.Enabled = false;
             lstLogs.Update();
             lstLogs.ClearSelected();
@@ -296,7 +299,8 @@ namespace ItracksLogParser
                 {
                     finalFileName = fileName.Substring(fileName.LastIndexOf('\\') + 1);
                 }
-                lstLogStrs.Add(finalFileName);
+                DateTime lastModified = System.IO.File.GetLastWriteTime(fileName);
+                lstLogStrs.Add(new KeyValuePair<string, DateTime>(finalFileName, lastModified));
             }
 
             lstLogs.Enabled = true;
@@ -308,6 +312,38 @@ namespace ItracksLogParser
 
         }
 
+        private void lstLogs_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            if (e.Index >= 0)
+            {
+                DateTime now = DateTime.Now;
+                KeyValuePair<string, DateTime> kv = (KeyValuePair<string, DateTime>)lstLogs.Items[e.Index];
+                if (kv.Value > now.AddHours(-12) && kv.Value <= now)
+                {
+                    e.Graphics.DrawString(kv.Key, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, e.Bounds);
+                }
+                else if (kv.Value > now.AddHours(-72) && kv.Value <= now)
+                {
+                    e.Graphics.DrawString(kv.Key, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, e.Bounds);
+                }
+                else
+                {
+                    e.Graphics.DrawString(kv.Key, new Font("Arial", 10, FontStyle.Italic), Brushes.Gray, e.Bounds);
+                }
+            } else
+            {
 
+                e.Graphics.DrawString("", new Font("Arial", 10, FontStyle.Regular), Brushes.Black, e.Bounds);
+            }
+
+            e.DrawFocusRectangle();
+        }
+
+        private void lstLogs_MeasureItem(object sender, MeasureItemEventArgs e)
+        {
+
+            e.ItemHeight = 15;
+        }
     }
 }

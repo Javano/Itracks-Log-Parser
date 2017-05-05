@@ -122,6 +122,8 @@
             this.lstLogs.Name = "lstLogs";
             this.lstLogs.Size = new System.Drawing.Size(130, 329);
             this.lstLogs.TabIndex = 2;
+            this.lstLogs.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lstLogs_DrawItem);
+            this.lstLogs.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.lstLogs_MeasureItem);
             this.lstLogs.SelectedValueChanged += new System.EventHandler(this.lstLogs_SelectedValueChanged);
             // 
             // Form1
